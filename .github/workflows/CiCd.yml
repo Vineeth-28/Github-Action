@@ -21,14 +21,14 @@ jobs:
 
   test:
     runs-on: ubuntu-latest
-
+    needs: build
     steps:
       - name: Testing the code
         run: echo "Code tested"
 
   deploy:
     runs-on: ubuntu-latest
-
+    needs: [test,build]
     steps:
       - name: Deploying the code
         run: echo "Deployed Code"
