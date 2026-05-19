@@ -2,6 +2,16 @@ name: CICD
 
 on:
   workflow_dispatch:
+    inputs:
+      environment:
+        description: "Select environment"
+        required: true
+        type: choice
+
+        options:
+          - dev
+          - stage
+          - prod
 
 jobs:
 
@@ -34,4 +44,4 @@ jobs:
 
     steps:
       - name: Deploying the code
-        run: echo "Deployed Code"
+        run: echo "Deploying to ${{ inputs.environment }}"
